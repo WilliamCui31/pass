@@ -50,10 +50,23 @@
       }
     }
 
+    function exitFullScreen() {
+    const doc = document
+    if (doc.webkitCancelFullScreen) {
+      doc.webkitCancelFullScreen()
+    } else if (doc.exitFullscreen) {
+      doc.exitFullscreen()
+    } else if (doc.mozCancelFullScreen) {
+      doc.mozCancelFullScreen()
+    } else if (doc.msExitFullscreen) {
+      doc.msExitFullsreen()
+    }
+  }
+
     const cover = document.querySelector('#cover');
     const health = document.querySelector('#health');
     const trip = document.querySelector('#trip');
-    cover.addEventListener('dblclick', () => {
+    cover.addEventListener('click', () => {
       enterFullScreen()
       document.body.removeChild(cover)
     })
@@ -61,6 +74,12 @@
       setTimeout(() => {
         delete health.className
         trip.className = 'show'
+      }, 500)
+    })
+    trip.addEventListener('click', () => {
+      setTimeout(() => {
+        delete trip.className
+        health.className = 'show'
       }, 500)
     })
   </script>
