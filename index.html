@@ -72,14 +72,12 @@
     })
     health.addEventListener('click', () => {
       setTimeout(() => {
-        delete health.className
         trip.className = 'show'
       }, 500)
     })
     trip.addEventListener('click', () => {
       setTimeout(() => {
-        delete trip.className
-        health.className = 'show'
+        trip.removeAttribute('class')
       }, 500)
     })
   </script>
