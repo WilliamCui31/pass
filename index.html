@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>通行证</title>
   <style>
+    #cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
     img {
       position: absolute;
       top: 0;
@@ -28,9 +35,28 @@
 <body>
   <img src="./health.jpg" id="health" class="show">
   <img src="./trip.jpg" id="trip">
+  <div id="cover"></div>  
   <script>
+    function enterFullScreen() {
+      const element = document.querySelector('body')
+      if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullScreen()
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen()
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen()
+      } else if (element.requestFullscreen) {
+        element.requestFullscreen()
+      }
+    }
+
+    const cover = document.querySelector('#cover');
     const health = document.querySelector('#health');
     const trip = document.querySelector('#trip');
+    cover.addEventListener('dblclick', () => {
+      enterFullScreen()
+      document.body.removeChild(cover)
+    })
     health.addEventListener('click', () => {
       setTimeout(() => {
         delete health.className
