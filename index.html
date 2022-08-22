@@ -50,19 +50,6 @@
       }
     }
 
-    function exitFullScreen() {
-    const doc = document
-    if (doc.webkitCancelFullScreen) {
-      doc.webkitCancelFullScreen()
-    } else if (doc.exitFullscreen) {
-      doc.exitFullscreen()
-    } else if (doc.mozCancelFullScreen) {
-      doc.mozCancelFullScreen()
-    } else if (doc.msExitFullscreen) {
-      doc.msExitFullsreen()
-    }
-  }
-
     const cover = document.querySelector('#cover');
     const health = document.querySelector('#health');
     const trip = document.querySelector('#trip');
